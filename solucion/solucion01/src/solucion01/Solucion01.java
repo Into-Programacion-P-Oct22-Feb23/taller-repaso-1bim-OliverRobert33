@@ -27,14 +27,15 @@ public class Solucion01 {
     String ciudad_empresa;
     double cancelar_matutinas;
     double cancelar_nocturnas;
-    int valor_matutina = 10;
-    int valor_nocturnas = 15;
+    //int valor_matutina = 10;
+    //int valor_nocturnas = 15;
     String mensaje = " ";
     int contador = 0;
     boolean bandera = true;
     int opcion = 111;
     double seguro_social;
     double valor_total;
+    double adicional;
     
     while (bandera == true){
         System.out.println("Ingrese el nombre del empleado: ");
@@ -48,13 +49,15 @@ public class Solucion01 {
         System.out.println("Ingrese la ciudad de la empresa: ");
         ciudad_empresa = entrada.nextLine();
         entrada.nextLine(); //Limpieza de buffer
-        
-        if(horas_nocturnas < 10){
-            cancelar_nocturnas =  horas_nocturnas * valor_nocturnas;
-        }else{
-            cancelar_nocturnas = horas_nocturnas * 10 / 100;      
-             }
-        cancelar_matutinas =  horas_matutinas * valor_matutina; 	
+        cancelar_nocturnas =  horas_nocturnas * 15;
+          
+        if(horas_nocturnas > 10){  
+            adicional = cancelar_nocturnas * 10 / 100;
+            cancelar_nocturnas =  cancelar_nocturnas + adicional;
+           // cancelar_nocturnas =  horas_nocturnas + cancelar_nocturnas;
+        }
+
+        cancelar_matutinas =  horas_matutinas * 10; 	
 	subtotal = cancelar_matutinas + cancelar_nocturnas;
         seguro_social = subtotal * 18 / 100;
         valor_total = subtotal - seguro_social;
